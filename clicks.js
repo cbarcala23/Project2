@@ -23,7 +23,7 @@ $("#downVote").on("click", function() {
 
 //add song button (plus sign)
 $("#addSong").on("click", function() {
-    $("#song").val();
+    $("#songTitle").val();
 },
 
 //add lounge button
