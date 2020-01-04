@@ -9,10 +9,12 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) {
       // Associating Author with Posts
       User.hasMany(song);
-      User.hasMany(session);
+      //   User.hasOne(session);
+      User.belongsToMany(Lounge, { through: Session });
 
     };
   
     return User;
   };
+  
   
