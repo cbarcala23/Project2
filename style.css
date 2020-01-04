@@ -1,0 +1,12 @@
+* {
+    background-color: #202020;
+    color: white;
+}
+
+nav, button {
+    color: black;
+}
+
+form, button {
+    background-color: white;
+}
