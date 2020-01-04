@@ -1,6 +1,7 @@
 * {
     background-color: #202020;
     color: white;
+    font-family: 'Open-sans', sans-serif;
 }
 
 nav, button {
@@ -10,3 +11,16 @@ nav, button {
 form, button {
     background-color: white;
 }
+
+div.container {
+    margin-bottom: 30px;
+}
+
+.body {
+    background-color: #202020;
+}
+
+#lounge {
+    font-family: 'Montserrat Subrayada', sans-serif;
+}
+

@@ -12,13 +12,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="../public/assets//js/lounges.js"></script>
 </head>
 
-<body>
+<body class="body">
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">Lounge</a>
+        <a class="navbar-brand" id="lounge">Lounge</a>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search">
             <button i class="fa fa-search" type="submit"></button>
@@ -32,7 +33,7 @@
                 <br />
                 <h4>Your lounges</h4> | <a href id="discover">Discover</a href>
             </div>
-            <div class="col">
+            <div class="col-auto">
                 <button i class="fa fa-plus fa-3x"></i></button>
                 <p>New lounge</p>
             </div>
@@ -88,6 +89,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <hr>
+    </footer>
 </body>
 
 </html>
