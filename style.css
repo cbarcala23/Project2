@@ -30,4 +30,9 @@ div.container {
 
 #get {
     color: #007bff;
+    margin-top: 50px;
+}
+
+#addMusic {
+    padding-right: 56px;
 }
