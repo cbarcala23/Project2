@@ -5,39 +5,26 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            }
+            },
         },
-
         source: {
             type: DataTypes.TEXT,
             allowNull: false
         },
 
-        source_link: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
-
-        votes: {
+        vote: {
             type: DataTypes.INTEGER,
-        },
-
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: 'users',
-            referencesKey: 'id'
         },
 
     });
 
 
-    Song.associate = (models) => {
-        // We're saying that a Post should belong to an Author
-        // A Post can't be created without an Author due to the foreign key constraint
-        Song.belongsTo(models.user);
-        Song.belongsTo(models.lounge, { through: models.playlist });
+Song.associate = (models) => {
 
-    };
+    Song.belongsTo(models.user);
+    Song.belongsTo(models.lounge, { through: models.playlist });
 
-    return Song;
+};
+
+return Song;
 };

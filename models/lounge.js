@@ -1,11 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
     var Lounge = sequelize.define("lounge", {
         name: DataTypes.STRING,
-        user_id: {
-            type: DataTypes.STRING,
-            references: 'users',
-            referencesKey: 'id'
-        },
+        // user_id: {
+        //     type: DataTypes.STRING,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id'
+        //     }
+    
         // playlist_id:{
         //     type: DataTypes.INT,
         //     references: "playlist",
@@ -16,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Lounge.associate = (models) => {
 
-        Lounge.belongsToMany(models.song, {through: models.playlist});
+        Lounge.belongsToMany(models.song, { through: models.playlist });
         //  Lounge.belongsTo(user_id),
         Lounge.belongsToMany(models.user, { through: models.session });
     };
