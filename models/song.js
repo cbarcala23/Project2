@@ -5,33 +5,31 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1]
-            },
+            }
+        },
 
-            source: {
-                type: DataTypes.TEXT,
-                allowNull: false
-            },
+        source: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
 
-            source_link: {
-                type: DataTypes.TEXT,
-                allowNull: false
-            },
+        source_link: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
 
-            vote: {
-                type: DataTypes.INTEGER,
-            },
+        votes: {
+            type: DataTypes.INTEGER,
+        },
 
-            
-
-            user_id: {
-                type: DataTypes.INTEGER,
-                references: 'users',
-                referencesKey: 'id'
-            },
-        
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: 'users',
+            referencesKey: 'id'
         },
 
     });
+
 
     Song.associate = (models) => {
         // We're saying that a Post should belong to an Author
