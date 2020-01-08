@@ -1,22 +1,44 @@
 // Routes
 // homepage:
 // get all lounges for display
-app.get("/api/lounges", function (req, res) {
+var db = require("../models");
+module.exports = function(app) {
+    // get all lounges for display
+
+    app.get("/api/lounges", function (req, res) {
 
     db.Lounge.findAll({}).then(function (dbLounge) {
         res.json(dbLounge);
     });
 });
+// get a lounge by name
+app.get("/api/lounges/:name", function(req, res) {
+    db.Lounge.findAll({
+      where: {
+        category: req.params.name
+      }
+    })
+      .then(function(dbLounge) {
+        res.json(dbLounge);
+      });
+  });
+
 
 // add a new lounge
 app.post("api/lounges", function (req, res) {
-    db.Lounge.create(req.body).then(function (dbLounge) {
+    db.Lounge.create({
+        name: req.body.name,
+        created: req.user.id
+    }).then(function (dbLounge) {
         res.json(dbLounge)
     });
 });
 // add a new user
 app.post("api/users", function (req, res) {
-    db.User.create(req.body).then(function (dbUser) {
+    db.User.create({
+        username: req.body.username,
+        password: req.body.password
+    }).then(function (dbUser) {
         res.json(dbUser)
     });
 });
@@ -54,4 +76,4 @@ app.get("/api/lounges/:id", function (req, res) {
     });
 });
 
-
+};

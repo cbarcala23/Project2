@@ -5,10 +5,13 @@ const db = require("../../models");
 
 const testLounges = {
     lounge1: {
+        name: hiphop,
+        playlist_id: 2
 
     },
     lounge2: {
-
+        name: rock,
+        playlist_id: 3
     }
 }
 
