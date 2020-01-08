@@ -41,3 +41,7 @@ img.img-fluid {
 #addMusic {
     padding-right: 56px;
 }
+
+#nowPlaying {
+    background-color: #202020;
+}
