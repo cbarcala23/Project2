@@ -20,6 +20,11 @@ div.container {
     background-color: #202020;
 }
 
+img.img-fluid {
+    height: 200px;
+    width: 300px;
+}
+
 #lounge {
     font-family: 'Montserrat Subrayada', sans-serif;
 }
@@ -35,4 +40,8 @@ div.container {
 
 #addMusic {
     padding-right: 56px;
+}
+
+#nowPlaying {
+    background-color: #202020;
 }
