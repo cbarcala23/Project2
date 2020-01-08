@@ -33,6 +33,18 @@ app.post("api/lounges", function (req, res) {
         res.json(dbLounge)
     });
 });
+
+// create a playlist
+app.post("api/playlists", function (req, res){
+    db.Playlist.create({
+        lounge_id: req.lounge.id
+    }).then(function (dbPlaylist){
+        res.json(dbPlaylist)
+    })
+});
+
+// add a song to a playlist
+
 // add a new user
 app.post("api/users", function (req, res) {
     db.User.create({
@@ -46,7 +58,6 @@ app.post("api/users", function (req, res) {
 app.get("/api/lounge/:id", function (req, res) {
 
     db.User.findAll({
-        // find all users? not sure how to specify
         include: [{
             model: Session,
             where: {
@@ -75,5 +86,58 @@ app.get("/api/lounges/:id", function (req, res) {
         res.json(dbLounge);
     });
 });
+
+
+
+// add a song to the playlist
+app.post("api/playlist", function (req, res) {
+    db.Playlist.add({
+        Song:
+        {
+            title: req.body.title,
+            source: req.body.source,
+            votes: req.body.source,
+            user_id: req.params.id
+        }
+    }).then(function (dbPlaylist) {
+        res.json(dbPlaylist)
+    });
+});
+// user adds a song
+app.post("api/song", function (req, res) {
+    console.log(req.body);
+    db.Song.create({
+        title: req.body.title,
+        source: req.body.source,
+        upvotes: 0,
+        downvotes: 0,
+        user_id: req.params.user_id
+    })
+        .then(function (dbSong) {
+            res.json(dbSong);
+        });
+});
+
+// add an upvote to a song
+// this.Song.findOne(
+//     { status: 1 },
+//     {
+//         where: { id: req.params.id },
+//     }).then(function (vote) {
+//         return vote.update({ status: 1 });
+//     }).then(function (vote) {
+//         res.sendStatus(200);
+//     });
+// add an upvote take 2
+// app.put({ Song.decrement(['votes', '1'], { where: { id: song_id } });});
+
+// // add a downvote to a song
+
+// Song.decrement(['votes', '1'], { where: { id: song_id } });
+
+// app.put("api/song", function (req, res) {
+    
+// });
+
 
 };

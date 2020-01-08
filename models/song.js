@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Song = sequelize.define("song", {
-        songName: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -8,25 +8,23 @@ module.exports = function (sequelize, DataTypes) {
             },
 
             source: {
-                type: DataTypes.CHAR,
+                type: DataTypes.TEXT,
                 allowNull: false
             },
 
             source_link: {
-                type: DataTypes.CHAR,
+                type: DataTypes.TEXT,
                 allowNull: false
             },
 
-            upvote: {
-                type: DataTypes.INT,
+            vote: {
+                type: DataTypes.INTEGER,
             },
 
-            downvote: {
-                type: DataTypes.INT,
-            },
+            
 
             user_id: {
-                type: DataTypes.INT,
+                type: DataTypes.INTEGER,
                 references: 'users',
                 referencesKey: 'id'
             },
@@ -35,11 +33,11 @@ module.exports = function (sequelize, DataTypes) {
 
     });
 
-    Song.associate = function (models) {
+    Song.associate = (models) => {
         // We're saying that a Post should belong to an Author
         // A Post can't be created without an Author due to the foreign key constraint
-        Song.belongsTo(user);
-        Song.hasOne(playlist);
+        Song.belongsTo(models.user);
+        Song.belongsTo(models.lounge, { through: models.playlist });
 
     };
 

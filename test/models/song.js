@@ -1,34 +1,45 @@
-const chai = require('chai');
-const expect = chai.expect;
+module.exports = function (sequelize, DataTypes) {
+    var Song = sequelize.define("song", {
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            },
 
-const db = require("../../models");
+            source: {
+                type: DataTypes.TEXT,
+                allowNull: false
+            },
 
-const testSongs = {
-    song1: {
-        title: thesongsong,
-        source: "www.youtube.com",
-        votes: 4,
-        user_id: 66
+            source_link: {
+                type: DataTypes.TEXT,
+                allowNull: false
+            },
 
-    },
-    song2: {
-        title: themelody2,
-        source: "www.deezer.com",
-        votes: 8,
-        user_id: 2
+            vote: {
+                type: DataTypes.INTEGER,
+            },
 
-    }
-}
+            
 
-describe('Song', function() {
+            user_id: {
+                type: DataTypes.INTEGER,
+                references: 'users',
+                referencesKey: 'id'
+            },
+        
+        },
 
-    it('should create a Song with ...', () => {
-        const song = testSongs.song1;
-        db.Song.create(song).then(function (dbSong) {
-            // test that lounge was created as expected
-            for(let prop of dbSong) {
-                expect(prop).to.equal(song[prop]);
-            }
-            done();  // ends test
-        });
     });
+
+    Song.associate = (models) => {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint
+        Song.belongsTo(models.user);
+        Song.belongsTo(models.lounge, { through: models.playlist });
+
+    };
+
+    return Song;
+};
