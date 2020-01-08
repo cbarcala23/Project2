@@ -12,23 +12,22 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             },
 
-            source_link: {
-                type: DataTypes.TEXT,
-                allowNull: false
-            },
+            
 
             vote: {
                 type: DataTypes.INTEGER,
             },
 
-            
 
-            user_id: {
-                type: DataTypes.INTEGER,
-                references: 'users',
-                referencesKey: 'id'
-            },
-        
+
+            // user_id: {
+            //     type: DataTypes.INTEGER,
+            //     references: {
+            //         model: 'users',
+            //         key: 'id'
+            //     }
+            // },
+
         },
 
     });

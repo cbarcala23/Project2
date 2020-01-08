@@ -2,142 +2,146 @@
 // homepage:
 // get all lounges for display
 var db = require("../models");
-module.exports = function(app) {
+module.exports = function (app) {
     // get all lounges for display
 
-    app.get("/api/lounges", function (req, res) {
+    app.get("/api/lounges/", function (req, res) {
 
-    db.Lounge.findAll({}).then(function (dbLounge) {
-        res.json(dbLounge);
+        db.lounge.findAll({}).then(function (dbLounge) {
+            res.json(dbLounge);
+        });
     });
-});
-// get a lounge by name
-app.get("/api/lounges/:name", function(req, res) {
-    db.Lounge.findAll({
-      where: {
-        category: req.params.name
-      }
-    })
-      .then(function(dbLounge) {
-        res.json(dbLounge);
-      });
-  });
-
-
-// add a new lounge
-app.post("api/lounges", function (req, res) {
-    db.Lounge.create({
-        name: req.body.name,
-        created: req.user.id
-    }).then(function (dbLounge) {
-        res.json(dbLounge)
-    });
-});
-
-// create a playlist
-app.post("api/playlists", function (req, res){
-    db.Playlist.create({
-        lounge_id: req.lounge.id
-    }).then(function (dbPlaylist){
-        res.json(dbPlaylist)
-    })
-});
-
-// add a song to a playlist
-
-// add a new user
-app.post("api/users", function (req, res) {
-    db.User.create({
-        username: req.body.username,
-        password: req.body.password
-    }).then(function (dbUser) {
-        res.json(dbUser)
-    });
-});
-// get all users in a lounge
-app.get("/api/lounge/:id", function (req, res) {
-
-    db.User.findAll({
-        include: [{
-            model: Session,
+    // get a lounge by name
+    app.get("/api/lounges/:name", function (req, res) {
+        db.lounge.findAll({
             where: {
-                lounge_id: req.params.id
+                category: req.params.name
             }
-        }],
-    }).then(function (dbSession) {
-        res.json(dbSession);
+        })
+            .then(function (dbLounge) {
+                res.json(dbLounge);
+            });
     });
-});
-// get all users
-app.get("/api/users", function (req, res) {
-
-    db.User.findAll({}).then(function (dbUser) {
-        res.json(dbUser);
-    });
-});
-// get one lounge by id (from click)
-app.get("/api/lounges/:id", function (req, res) {
-    db.Lounge.findOne({
-        where: {
-            id: req.params.id
-        },
-        include: [db.User]
-    }).then(function (dbLounge) {
-        res.json(dbLounge);
-    });
-});
 
 
-
-// add a song to the playlist
-app.post("api/playlist", function (req, res) {
-    db.Playlist.add({
-        Song:
-        {
-            title: req.body.title,
-            source: req.body.source,
-            votes: req.body.source,
-            user_id: req.params.id
-        }
-    }).then(function (dbPlaylist) {
-        res.json(dbPlaylist)
+    // add a new lounge
+    app.post("api/lounges", function (req, res) {
+        db.lounge.create({
+            name: req.body.name,
+            // created: req.user.id
+        }).then(function (dbLounge) {
+            res.json(dbLounge)
+        });
     });
-});
-// user adds a song
-app.post("api/song", function (req, res) {
-    console.log(req.body);
-    db.Song.create({
-        title: req.body.title,
-        source: req.body.source,
-        upvotes: 0,
-        downvotes: 0,
-        user_id: req.params.user_id
-    })
-        .then(function (dbSong) {
+
+    // create a playlist
+    app.post("api/playlists", function (req, res) {
+        db.playlist.create({
+            lounge_id: req.lounge.id
+        }).then(function (dbPlaylist) {
+            res.json(dbPlaylist)
+        })
+    });
+
+    // add a song to a playlist
+
+    // add a new user
+    app.post("/api/users", function (req, res) {
+        db.user.create({
+            username: req.body.username,
+            password: req.body.password
+        }).then(function (dbUser) {
+            res.json(dbUser)
+        });
+    });
+    // get all users in a lounge
+    app.get("/api/lounge/:id", function (req, res) {
+
+        db.user.findAll({
+            include: [{
+                model: session,
+                where: {
+                    lounge_id: req.params.id
+                }
+            }],
+        }).then(function (dbSession) {
+            res.json(dbSession);
+        });
+    });
+    // get all users
+    app.get("/api/users", function (req, res) {
+
+        db.user.findAll({}).then(function (dbUser) {
+            res.json(dbUser);
+        });
+    });
+    // get one lounge by id (from click)
+    app.get("/api/lounges/:id", function (req, res) {
+        db.lounge.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.user]
+        }).then(function (dbLounge) {
+            res.json(dbLounge);
+        });
+    });
+
+
+
+    // add a song to the playlist
+    app.post("/api/playlist", function (req, res) {
+        db.playlist.add({
+            Song:
+            {
+                title: req.body.title,
+                source: req.body.source,
+                votes: req.body.source,
+                // user_id: req.params.id
+            }
+        }).then(function (dbPlaylist) {
+            res.json(dbPlaylist)
+        });
+    });
+    // user adds a song
+    app.post("/api/songs", function (req, res) {
+        db.song.create(req.body)
+            .then(function (dbSong) {
+                res.json(dbSong);
+            });
+    });
+
+    // title: req.body.title,
+            // source: req.body.source,
+            // votes: req.body.votes,
+            // // user_id: req.params.user_id
+
+    app.get("/api/songs", function (req, res) {
+
+        db.song.findAll({}).then(function (dbSong) {
             res.json(dbSong);
         });
-});
+    });
+    // add an upvote to a song
+    // this.Song.findOne(
+    //     { status: 1 },
+    //     {
+    //         where: { id: req.params.id },
+    //     }).then(function (vote) {
+    //         return vote.update({ status: 1 });
+    //     }).then(function (vote) {
+    //         res.sendStatus(200);
+    //     });
+    // add an upvote take 2
+    // app.put({ Song.decrement(['votes', '1'], { where: { id: song_id } });});
 
-// add an upvote to a song
-// this.Song.findOne(
-//     { status: 1 },
-//     {
-//         where: { id: req.params.id },
-//     }).then(function (vote) {
-//         return vote.update({ status: 1 });
-//     }).then(function (vote) {
-//         res.sendStatus(200);
-//     });
-// add an upvote take 2
-// app.put({ Song.decrement(['votes', '1'], { where: { id: song_id } });});
+    // // add a downvote to a song
 
-// // add a downvote to a song
+    // Song.decrement(['votes', '1'], { where: { id: song_id } });
 
-// Song.decrement(['votes', '1'], { where: { id: song_id } });
+    // app.put("api/song", function (req, res) {
 
-// app.put("api/song", function (req, res) {
-    
-// });
+    // });
 
 
 };
