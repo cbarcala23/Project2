@@ -1,0 +1,38 @@
+* {
+    background-color: #202020;
+    color: white;
+    font-family: 'Open-sans', sans-serif;
+}
+
+nav, button {
+    color: black;
+}
+
+form, button {
+    background-color: white;
+}
+
+div.container {
+    margin-bottom: 30px;
+}
+
+.body {
+    background-color: #202020;
+}
+
+#lounge {
+    font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+#new {
+    margin-top: 5px;
+}
+
+#get {
+    color: #007bff;
+    margin-top: 50px;
+}
+
+#addMusic {
+    padding-right: 56px;
+}
