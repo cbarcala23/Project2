@@ -20,21 +20,14 @@ module.exports = function (sequelize, DataTypes) {
 
 
 
-            // user_id: {
-            //     type: DataTypes.INTEGER,
-            //     references: {
-            //         model: 'users',
-            //         key: 'id'
-            //     }
-            // },
+          
 
         },
 
     });
 
     Song.associate = (models) => {
-        // We're saying that a Post should belong to an Author
-        // A Post can't be created without an Author due to the foreign key constraint
+        
         Song.belongsTo(models.user);
         Song.belongsTo(models.lounge, { through: models.playlist });
 

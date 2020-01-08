@@ -105,16 +105,21 @@ module.exports = function (app) {
     });
     // user adds a song
     app.post("/api/songs", function (req, res) {
-        db.song.create(req.body)
+        db.song.create({
+            title: req.body.title,
+            source: req.body.source,
+            votes: req.body.votes,
+            // user_id: req.params.user_id
+        })
             .then(function (dbSong) {
                 res.json(dbSong);
             });
     });
 
     // title: req.body.title,
-            // source: req.body.source,
-            // votes: req.body.votes,
-            // // user_id: req.params.user_id
+    // source: req.body.source,
+    // votes: req.body.votes,
+    // // user_id: req.params.user_id
 
     app.get("/api/songs", function (req, res) {
 
@@ -122,26 +127,9 @@ module.exports = function (app) {
             res.json(dbSong);
         });
     });
-    // add an upvote to a song
-    // this.Song.findOne(
-    //     { status: 1 },
-    //     {
-    //         where: { id: req.params.id },
-    //     }).then(function (vote) {
-    //         return vote.update({ status: 1 });
-    //     }).then(function (vote) {
-    //         res.sendStatus(200);
-    //     });
-    // add an upvote take 2
-    // app.put({ Song.decrement(['votes', '1'], { where: { id: song_id } });});
 
-    // // add a downvote to a song
-
-    // Song.decrement(['votes', '1'], { where: { id: song_id } });
-
-    // app.put("api/song", function (req, res) {
-
-    // });
+    app.put(Song.increment(['votes', '1'], { where: { id: song_id } }));
+    app.put(Song.decrement(['votes', '1'], { where: { id: song_id } }));
 
 
 };
