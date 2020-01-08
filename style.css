@@ -1,6 +1,6 @@
 * {
     background-color: #202020;
-    color: white;
+    color: #ffffff;
     font-family: 'Open-sans', sans-serif;
 }
 
@@ -36,10 +36,6 @@ img.img-fluid {
 #get {
     color: #007bff;
     margin-top: 50px;
-}
-
-#addMusic {
-    padding-right: 56px;
 }
 
 #nowPlaying {
