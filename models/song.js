@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             },
-
+        },
             source: {
                 type: DataTypes.TEXT,
                 allowNull: false
@@ -21,8 +21,8 @@ module.exports = function (sequelize, DataTypes) {
 
 
           
-
-        },
+        
+    
 
     });
 

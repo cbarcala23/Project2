@@ -128,8 +128,8 @@ module.exports = function (app) {
         });
     });
 
-    app.put(Song.increment(['votes', '1'], { where: { id: song_id } }));
-    app.put(Song.decrement(['votes', '1'], { where: { id: song_id } }));
+    // app.put(song.increment(['votes', '1'], { where: { id: song_id } }));
+    // app.put(song.decrement(['votes', '1'], { where: { id: song_id } }));
 
 
 };
