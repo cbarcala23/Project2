@@ -29,12 +29,16 @@ img.img-fluid {
     font-family: 'Montserrat Subrayada', sans-serif;
 }
 
+#discover {
+    color: rgb(9, 194, 255);
+}
+
 #new {
     margin-top: 5px;
 }
 
 #get {
-    color: #007bff;
+    color: rgb(9, 194, 255);
     margin-top: 50px;
 }
 
