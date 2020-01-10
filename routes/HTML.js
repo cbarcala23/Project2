@@ -5,6 +5,10 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/html/main.html"));
       });
     
+
+      app.get("/lounge", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/html/lounge.html"));
+
       app.get("/kpop", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/html/kpop.html"));
       });
@@ -23,6 +27,7 @@ module.exports = function(app) {
 
       app.get("/edm", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/html/edm.html"));
+
       });
     
       // blog route loads blog.html
