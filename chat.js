@@ -6,7 +6,7 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/lounge.html');
 });
 
-var roomno = 1;
+// var roomno = 1;
 
 io.on('connection', function (socket) {
     console.log('a user connected');
@@ -26,6 +26,6 @@ io.on('connection', function (socket) {
 
 
 
-http.listen(3000, function () {
-    console.log('listening on *:3000');
-});
+// http.listen(3000, function () {
+//     console.log('listening on *:3000');
+// });

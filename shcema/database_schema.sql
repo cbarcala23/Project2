@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS lounge;
+DROP DATABASE IF EXISTS loungedb;
 -- Creates the "blogger" database --
-CREATE DATABASE lounge;
+CREATE DATABASE loungedb;
 
-USE lounge;
+USE loungedb;
 
 CREATE TABLE users (
   id Int( 1000 ) AUTO_INCREMENT NOT NULL,
