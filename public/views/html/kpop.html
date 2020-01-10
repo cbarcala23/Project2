@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style2.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/style2.css" type="text/css" />
     <title>Lounge</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="../public/assets//js/lounges.js"></script>
+   
 
     <style>
         .chat {
@@ -50,9 +50,9 @@
             padding: 5px 10px;
         }
 
-        /* #messages li:nth-child(odd) {
-            background: #eee;
-        } */
+        #messages li:nth-child(odd) {
+            color: rgb(0, 153, 255);
+        }
 
         #messagebox {
             height: 300px;
@@ -97,7 +97,7 @@
 
 </head>
 
-<body background="images/lounge5.jpg"></body>
+<body background="images/lounge.jpg"></body>
 
 <body class="body">
     <nav class="navbar navbar-light bg-light justify-content-between">
@@ -112,9 +112,9 @@
     <div class="container">
         <div class="row d-flex justify-content-start">
             <div class="col">
-                <a href="main.html">
-                <button i class="fa fa-arrow-left fa-2x" type="submit"></button></a>
-                <h1>Jazz</h1>
+                <!-- <a href="main.html"> -->
+                <button i class="fa fa-arrow-left fa-2x" type="submit" id="back"></button></a>
+                <h1>K-Pop</h1>
                 <br />
             </div>
             <div class="col d-flex justify-content-end">
@@ -164,7 +164,6 @@
                 <div class="card" style="width: 25rem; height: 20rem">
                     <div class="card-body">
                         <h5 class="card-title">Playlist goes here
-                            
                         </h5>
                         <form class="form-inline">
                             <button i class="fa fa-plus fa-2x" type="submit"></button>
@@ -187,6 +186,10 @@
             </div>
         </div>
     </footer>
+    <script src="../../js/lounge.js"></script>
+    <script src="../../js/clicks.js"></script>
+    <script src="../../js/chat.js"></script>
+
 </body>
 
 </html>
