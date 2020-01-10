@@ -26,12 +26,13 @@ module.exports = function (sequelize, DataTypes) {
 
     });
 
-    Song.associate = (models) => {
-        
-        Song.belongsTo(models.user);
-        Song.belongsTo(models.lounge, { through: models.playlist });
 
-    };
+Song.associate = (models) => {
 
-    return Song;
+    Song.belongsTo(models.user);
+    Song.belongsTo(models.lounge, { through: models.playlist });
+
+};
+
+return Song;
 };
