@@ -5,11 +5,10 @@ $("#submitbutton").on("click", function (event) {
     var searchVal = $("#addMusic").val();
     console.log(searchVal);
     getSong(searchVal);
-})
 
 //GET SONG DATA USING SEARCH VARIABLE
 function getSong(searchVal) {
-    console.log("thisran");
+
     var queryParams = searchVal;
     console.log("queryParams: " + queryParams);
     var queryURL = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${queryParams}`;
@@ -31,6 +30,3 @@ function getSong(searchVal) {
 
         //APPEND ENTRIES BELOW SEARCH
         $('#playlist').append($('<li>' + '<i class="fas fa-thumbs-up"></i>').text(queryParams));
-
-    })
-}
