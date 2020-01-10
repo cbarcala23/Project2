@@ -5,7 +5,8 @@ $("#submitbutton").on("click", function (event) {
     var searchVal = $("#addMusic").val();
     console.log(searchVal);
     getSong(searchVal);
-})
+});
+
 
 //GET SONG DATA USING SEARCH VARIABLE
 function getSong(searchVal) {

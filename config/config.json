@@ -1,7 +1,8 @@
 {
     "development": {
       "username": "root",
-      "password": "SQL@8mahal",
+      "password": "6starrating",
+
       "database": "loungedb",
       "host": "127.0.0.1",
       "port": 3306,
@@ -9,7 +10,9 @@
     },
     "test": {
       "username": "root",
+
       "password": "SQL@8mahal",
+
       "database": "loungedb",
       "host": "127.0.0.1",
       "port": 3306,
@@ -17,6 +20,7 @@
     },
     "production": {
       "username": "root",
+
       "password": "SQL@8mahal",
       "database": "loungedb",
       "host": "127.0.0.1",
