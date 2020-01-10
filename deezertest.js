@@ -1,95 +1,68 @@
-// //var APIKEY = "9aacd4f040604f24bdf021521839307c"
-// var APIKEY = "7d88c9b540a944938b571ae7ddef8d26"
-
 
 //CLICK HANDLER
-$("#food-button").on("click", function (event) {
+$("#submitbutton").on("click", function (event) {
     event.preventDefault();
-    var searchVal = $("#textarea1").val();
+    var searchVal = $("#addMusic").val();
     console.log(searchVal);
-    getFoodData(searchVal);
+    getSong(searchVal);
 })
 
-$("#clear-button").on("click", function (event) {
-    event.preventDefault();
-    clearSearch();
-})
-
-//CLEAR RECIPE AREA
-function clearRecipe() {
-    $("#foodText").empty();
-    $("#time").empty();
-    $("#servings").empty();
-    $("#ingredients").empty();
-    $("#instructions").empty();
-    $("#images").empty();
-}
-
-//CLEAR SEARCH AREA
-function clearSearch() {
-    $("#searchresults").empty();
-}
-
-//GET FOOD DATA USING SEARCH VARIABLE
-function getFoodData(searchVal) {
+//GET SONG DATA USING SEARCH VARIABLE
+function getSong(searchVal) {
     var queryParams = searchVal;
     console.log("queryParams: " + queryParams);
-    var queryURL = `https://api.deezer.com/search?q=“${queryParams}“`;
+    var queryURL = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${queryParams}`;
     console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
+        console.log(response);
+        console.log(response.data[0].album.id);
+        
+        //GET THE ALBUM ID FROM THE API CALL
+        var id = response.data[0].album.id;
 
-        for (var i = 1; i <= 5; i++) {
-            var resultsection = $("#searchresults");
-            var recipename = $("<button class='recipebutton'>" + response.results[i].title + "</button>" + "<br>");
-            //console.log("recipename" + recipename);
-            //console.log("resultdiv" + resultdiv);
-            recipename.attr("data-id", response.results[i].id);
-            resultsection.append(recipename);
-            //console.log(response.results[i].id);
-        }
-        // //Append recipe button text to right side
-        // $(".recipebutton").on("click", function (event) {
-        //     clearRecipe();
-        //     var reciperightside = $("<div>" + this.textContent + "</div>").appendTo(foodText);
-        //     var recipeid = $(this).attr("data-id");
-        //     console.log(recipeid);
-        //     getRecipeData(recipeid);
+        //APPEND THE PLAYER WITH ID OF ALBUM SET FROM THE USER INPUT
+        var player = $("#nowPlaying");
+        var playerhtml = $(`<iframe scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=true&playlist=true&playing=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=album&id=${id}&app_id=1&current_song_index=0&current_song_time=4&autoplay=true&playing=true" width="%100" height="%100"></iframe>`);
+        player.html(playerhtml);
+
+        //APPEND ENTRIES BELOW SEARCH
+        $('#playlist').append($('<li>' + '<i class="fas fa-thumbs-up"></i>').text(queryParams));
+
+        // ATTEMPT TO MAKE PLAYLIST LIST RE-CLICKABLE
+        // var playlistitem = $('#playlist').append($("<button class='playlistbutton'>" + queryParams + "</button>" + "<br>"));
+        // playlistitem.attr("data-id", queryParams);
+
+        // $(".playlistbutton").on("click", function (event) {
+        //     var queryfromlist = $(this).attr("data-id");
+        //     console.log(queryfromlist);
+
         // })
-    })
-}
-function getRecipeData(recipeid) {
-    var queryURLid = `https://api.spoonacular.com/recipes/${recipeid}/information?&apiKey=${APIKEY}`;
-    console.log(queryURLid);
-    $.ajax({
-        url: queryURLid,
-        method: "GET"
-    }).then(function (response) {
-        console.log("getRecipeDataresponse" + response)
-
-        var recipe = response;
-        console.log("recipe", recipe);
-
-        var recipedetails = {
-            Time: recipe.readyInMinutes,
-            Servings: recipe.servings,
-            Instructions: recipe.instructions,
-            Image: recipe.image,
-        }
-        console.log(recipedetails);
-        $("#time").append("Time: " + recipedetails.Time);
-        $("#servings").append("Servings: " + recipedetails.Servings);
-        $("#instructions").append("Instructions: " + recipedetails.Instructions);
-        $("#images").attr('src', recipedetails.Image);
-
-        for (var i = 0; i <= recipe.extendedIngredients.length; i++) {
-            $("<li>" + recipe.extendedIngredients[i].original + "</li>").appendTo("#ingredients");
-        }
 
     })
-
 }
 
+// ATTEMPT TO GET NEW QUERY OFF RE-CLICKABLE LIST ITEM
+// function getSongfromList(searchVal) {
+//     var queryParams = searchVal;
+//     console.log("queryParams: " + queryParams);
+//     var queryURL = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=${queryParams}`;
+//     console.log(queryURL);
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         console.log(response);
+//         console.log(response.data[0].album.id);
+        
+//         //GET THE ALBUM ID FROM THE API CALL
+//         var id = response.data[0].album.id;
+
+//         //APPEND THE PLAYER WITH ID OF ALBUM SET FROM THE USER INPUT
+//         var player = $("#nowPlaying");
+//         var playerhtml = $(`<iframe scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=true&playlist=true&playing=true&width=700&height=350&color=ff0000&layout=dark&size=medium&type=album&id=${id}&app_id=1&current_song_index=0&current_song_time=4&autoplay=true&playing=true" width="%100" height="%100"></iframe>`);
+//         player.html(playerhtml);
+//     })
+// }
