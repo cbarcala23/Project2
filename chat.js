@@ -1,18 +1,37 @@
-var app = require('express')();
+// var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+var PORT = process.env.PORT || 8080;
+// Requiring our models for syncing
+var db = require("./models");
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Static directory
+app.use(express.static("public"));
+
+require("./routes/API")(app);
+require("./routes/HTML")(app);
+
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
+
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/lounge.html');
 });
 
-// var roomno = 1;
 
 io.on('connection', function (socket) {
     console.log('a user connected');
-    // socket.join("room-"+roomno);
-    // //Send this event to everyone in the room.
-    // io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. "+roomno);
     socket.on('disconnect', function () {
         console.log('user disconnected');
     });
@@ -25,7 +44,6 @@ io.on('connection', function (socket) {
 });
 
 
-
-// http.listen(3000, function () {
-//     console.log('listening on *:3000');
-// });
+http.listen(3000, function () {
+    console.log('listening on *:3000');
+});
