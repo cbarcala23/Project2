@@ -2,23 +2,23 @@
     "development": {
       "username": "root",
       "password": "6starrating",
-      "database": "loungeDB",
+      "database": "loungedb",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
     },
     "test": {
       "username": "root",
-      "password": "6starrating",
-      "database": "loungeDB",
+      "password": "@6starrating@20!!",
+      "database": "loungedb",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
     },
     "production": {
       "username": "root",
-      "password": null,
-      "database": "loungeDB",
+      "password": "@6starrating@20!!",
+      "database": "loungedb",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"

@@ -128,41 +128,8 @@ module.exports = function (app) {
         });
     });
 
-    app.put("/api/songs", function (req, res) {
-        db.song.findOne({
-            where: {
-                id: song_id
-            }
-        }).then(song => {
-            return song.increment('votes'); // assumes `option` always exists
-        }).then(song => {
-            return song.reload();
-        }).then(song => {
-            res.json(song);
-        });
-    });
-
-    app.put("/api/songs", function (req, res) {
-        db.song.findOne({
-            where: {
-                id: song_id
-            }
-        }).then(song => {
-            return song.decrement('votes'); // assumes `option` always exists
-        }).then(song => {
-            return song.reload();
-        }).then(song => {
-            res.json(song);
-        });
-    });
-
-    app.get("/api/songs", function (req, res) {
-        db.song.findAll({
-            where: {
-
-            }
-        })
-    });
+    // app.put(Song.increment(['votes', '1'], { where: { id: song_id } }));
+    // app.put(Song.decrement(['votes', '1'], { where: { id: song_id } }));
 
 
-    };
+};
