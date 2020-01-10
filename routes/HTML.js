@@ -2,19 +2,19 @@ var path = require("path");
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/html/main.html"));
+        res.sendFile(path.join(__dirname, "../public/views/html/main.html"));
       });
     
       app.get("/kpop", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/html/kpop.html"));
+        res.sendFile(path.join(__dirname, "../public/views/html/kpop.html"));
       });
 
       app.get("/rock", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/public/html/rock.html"));
+        res.sendFile(path.join(__dirname, "../public/views/html/rock.html"));
       });
 
       app.get("/classical", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/public/html/classical.html"));
+        res.sendFile(path.join(__dirname, "../public/views/html/classical.html"));
       });
 
       app.get("/jazz", function(req, res) {
@@ -22,7 +22,11 @@ module.exports = function(app) {
       });
 
       app.get("/edm", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/html/edm.html"));
+        res.sendFile(path.join(__dirname, "../public/views/html/edm.html"));
+      });
+
+      app.get("/hiphop", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/views/html/hiphop.html"));
       });
     
       // blog route loads blog.html
