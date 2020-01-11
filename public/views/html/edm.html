@@ -25,6 +25,7 @@
         }
 
         form input {
+            background: #000;
             border: 1;
             padding: 10px;
             width: 100%;
@@ -49,9 +50,10 @@
             padding: 5px 10px;
         }
 
-        /* #messages li:nth-child(odd) {
-            background: #eee;
-        } */
+        #messages li:nth-child(odd) {
+            color: rgb(0, 153, 255);
+        }
+
 
         #messagebox {
             height: 300px;
@@ -91,6 +93,11 @@
 
         #addMusic {
             padding-right: 56px;
+        }
+        #playlist {
+            list-style-type: none;
+            margin: 20;
+            padding: 2;
         }
     </style>
 
@@ -150,9 +157,6 @@
                                         $('#messages').append($('<li>').text(msg));
                                         window.scrollTo(0, document.body.scrollHeight);
                                     });
-                                    // socket.on('connectToRoom', function (data) {
-                                    //     alert("you are in room 1");
-                                    // });
                                 });
                             </script>
                         </h5>
@@ -166,9 +170,10 @@
                             
                         </h5>
                         <form class="form-inline">
-                            <button i class="fa fa-plus fa-2x" type="submit"></button>
+                            <button i class="fa fa-plus fa-2x" id="submitbutton" type="submit"></button>
                             <input class="form-control" type="search" placeholder="Add artist/song" id="addMusic">
                         </form>
+                        <div id="playlist"></div>
                     </div>
                 </div>
             </div>
@@ -181,14 +186,14 @@
         <div class="card text-center" id="nowPlaying">
             <div class="card-body">
                 <h5 class="card-title">
-                    <iframe scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=false&width=700&height=350&color=ff0000&layout=dark&size=medium&type=playlist&id=30595446&app_id=1" width="700" height="75"></iframe>
+                    <div class="card text-center" id="nowPlaying"></div>
                 </h5>
             </div>
         </div>
     </footer>
     <script src="../../js/lounge.js"></script>
     <script src="../../js/clicks.js"></script>
-    <script src="../../js/chat.js"></script>
+    <!-- <script src="../../js/chat.js"></script> -->
 
 </body>
 
