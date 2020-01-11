@@ -1,24 +1,24 @@
 {
   "development": {
     "username": "root",
-    "password": "SQL@8mahal",
-    "database": "loungedb",
+    "password": "6starrating",
+    "database": "loungeDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
     "username": "root",
-    "password": "SQL@8mahal",
-    "database": "loungedb",
+    "password": "6starrating",
+    "database": "loungeDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "production": {
     "username": "root",
-    "password": "SQL@8mahal",
-    "database": "loungedb",
+    "password": "6starrating",
+    "database": "loungeDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
