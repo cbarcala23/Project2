@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8000;
 // Requiring our models for syncing
 var db = require("./models");
 
@@ -25,29 +25,29 @@ db.sequelize.sync({ force: true }).then(function() {
 });
 
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/kpop.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/kpop.html');
+// });
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/rock.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/rock.html');
+// });
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/classical.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/classical.html');
+// });
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/edm.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/edm.html');
+// });
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/jazz.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/jazz.html');
+// });
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/hiphop.html');
-});
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/hiphop.html');
+// });
 
 
 io.on('connection', function (socket) {
@@ -64,6 +64,6 @@ io.on('connection', function (socket) {
 });
 
 
-http.listen(3000, function () {
-    console.log('listening on *:3000');
+http.listen(8080, function () {
+    console.log('sockets listening on *:8000');
 });
