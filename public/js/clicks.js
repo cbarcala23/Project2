@@ -1,40 +1,40 @@
 $("#kpop").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/kpop");
+    window.location.replace("/kpop");
 });
 
 $("#hiphop").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/hiphop");
+    window.location.replace("/hiphop");
 });
 
 $("#rock").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/rock");
+    window.location.replace("/rock");
 });
 
 $("#classical").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/classical");
+    window.location.replace("/classical");
 });
 
 $("#jazz").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/jazz");
+    window.location.replace("/jazz");
 });
 
 $("#edm").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/edm");
+    window.location.replace("/edm");
 });
 $("#back").on("click", function(event) {
     event.preventDefault();
     console.log("click is firing");
-    window.location.replace("http://localhost:8080/");
+    window.location.replace("/");
 });
