@@ -1,25 +1,25 @@
 {
   "development": {
-    "username": "root",
-    "password": "@Lph@20!!",
-    "database": "loungedb",
-    "host": "127.0.0.1",
+    "username": "ncl99ebviso4ydtw",
+    "password": "zths8w8oilrwje23",
+    "database": "ey1cs81umx6vgkk7",
+    "host": "ysp9sse09kl0tzxj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "@Lph@20!!",
-    "database": "loungedb",
-    "host": "127.0.0.1",
+    "username": "ncl99ebviso4ydtw",
+    "password": "zths8w8oilrwje23",
+    "database": "ey1cs81umx6vgkk7",
+    "host": "ysp9sse09kl0tzxj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "@Lph@20!!",
-    "database": "loungedb",
-    "host": "127.0.0.1",
+    "username": "ncl99ebviso4ydtw",
+    "password": "zths8w8oilrwje23",
+    "database": "ey1cs81umx6vgkk7",
+    "host": "ysp9sse09kl0tzxj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   }
