@@ -2,6 +2,9 @@
 // homepage:
 // get all lounges for display
 var db = require("../models");
+// Require Axios for Ajax Server side call
+var axios = require("axios");
+
 module.exports = function (app) {
     // get all lounges for display
 
@@ -132,4 +135,16 @@ module.exports = function (app) {
     // app.put(Song.decrement(['votes', '1'], { where: { id: song_id } }));
 
 
+    //Route that uses the request parameter /:song to build the query and call out to Deezer with the queryURL
+    app.get("/api/getsong/:song", function (req, res) {
+        var queryParams = req.params.song;
+        console.log("queryParams: " + queryParams);
+        var queryURL = `https://api.deezer.com/search?q=${queryParams}`;
+        console.log(queryURL);
+        axios.get(queryURL)
+            .then(function (response) {
+                console.log(response.data);
+                res.json(response.data);
+            })
+    });
 };

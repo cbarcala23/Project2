@@ -43,32 +43,6 @@ db.sequelize.sync({ force: true }).then(function() {
       });
 });
 
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/kpop.html');
-});
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/rock.html');
-});
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/classical.html');
-});
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/edm.html');
-});
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/jazz.html');
-});
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/hiphop.html');
-});
-
-
 //Old Socket Server
 // http.listen(3000, function () {
 //     console.log('listening on *:3000');
