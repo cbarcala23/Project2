@@ -140,24 +140,6 @@
                                 <div><input id="m" autocomplete="off" /></div>
                                 <div><button class="chatbutton">Send</button></div>
                             </form>
-
-                            <script src="/socket.io/socket.io.js"></script>
-                            <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-                            <script>
-                                $(function () {
-                                    var socket = io();
-                                    $('.chat').submit(function (e) {
-                                        e.preventDefault(); // prevents page reloading
-                                        socket.emit('chat message', $('#m').val());
-                                        $('#m').val('');
-                                        return false;
-                                    });
-                                    socket.on('chat message', function (msg) {
-                                        $('#messages').append($('<li>').text(msg));
-                                        window.scrollTo(0, document.body.scrollHeight);
-                                    });
-                                });
-                            </script>
                         </h5>
                     </div>
                 </div>
@@ -166,7 +148,6 @@
                 <div class="card" style="width: 25rem; height: 20rem">
                     <div class="card-body">
                         <h5 class="card-title">Playlist goes here
-                            
                         </h5>
                         <form class="form-inline">
                             <button i class="fa fa-plus fa-2x" id="submitbutton" type="submit"></button>
@@ -191,8 +172,11 @@
         </div>
     </footer>
     <script src="../../js/lounge.js"></script>
-    <!-- <script src="../../js/chat.js"></script> -->
     <script src="../../js/clicks.js"></script>
+    <script src="../../js/chat.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
 </body>
 
 </html>
