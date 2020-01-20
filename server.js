@@ -42,8 +42,3 @@ db.sequelize.sync({ force: true }).then(function() {
           });
       });
 });
-
-//Old Socket Server
-// http.listen(3000, function () {
-//     console.log('listening on *:3000');
-// });
